@@ -116,15 +116,7 @@ public class ContatoController {
         }
     }
 
-    @DeleteMapping("/profissional/{idProfissional}/contato")
-    public ResponseEntity<List<Contato>> deleteAllContatoOfProfissional(@PathVariable(value = "idProfissional") Long idProfissional) {
-        if (!profissionalRepository.existsById(idProfissional)) {
-            throw new ResourceNotFoundException("Não foi localizado Profissional com o id = " + idProfissional);
-        }
 
-        contatoRepository.deleteByProfissionalId(idProfissional);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
     @Operation(summary = "Busca os contatos atraves do Id do profissional", tags = {"contato"})
     @ApiResponses({
         @ApiResponse(responseCode = "204", content = {
